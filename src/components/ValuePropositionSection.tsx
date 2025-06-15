@@ -1,17 +1,16 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { MagicWand, Embed, Search } from 'lucide-react';
+import { Wand2, Code, Search } from 'lucide-react';
 
 const ValuePropositionSection = () => {
   const features = [
     {
-      icon: MagicWand,
+      icon: Wand2,
       title: "AI-Optimized Portfolios",
       description: "Our AI analyzes your portfolio and provides personalized recommendations to increase your visibility and impact with recruiters."
     },
     {
-      icon: Embed,
+      icon: Code,
       title: "Stand Out with Interactive Work",
       description: "Showcase live demos, interactive prototypes, and multimedia projects that tell your story better than static resumes ever could."
     },
