@@ -88,17 +88,21 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  html {
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-brand-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-600 to-purple-600 dark:from-brand-400 dark:to-purple-400 bg-clip-text text-transparent;
   }
   
   .hover-lift {
@@ -106,6 +110,6 @@
   }
   
   .glass {
-    @apply backdrop-blur-sm bg-white/10 border border-white/20;
+    @apply backdrop-blur-sm bg-white/10 dark:bg-gray-900/10 border border-white/20 dark:border-gray-700/20;
   }
 }
