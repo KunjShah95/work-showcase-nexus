@@ -63,39 +63,39 @@ const TestimonialsSection = () => {
   const current = testimonials[currentTestimonial];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-brand-50 to-purple-50">
+    <section className="py-20 px-4 bg-gradient-to-br from-brand-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white transition-colors duration-300">
             What Our Community <span className="gradient-text">Says</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
             From students landing their dream jobs to recruiters finding perfect matches.
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card className="shadow-2xl border-none bg-white relative overflow-hidden">
+          <Card className="shadow-2xl border-none bg-white dark:bg-gray-800 relative overflow-hidden transition-colors duration-300">
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-primary"></div>
             
             <CardContent className="p-12 text-center">
               <div className="mb-6">
                 <Badge 
                   variant="secondary" 
-                  className={`${current.category === 'student' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}`}
+                  className={`${current.category === 'student' ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200' : 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200'} transition-colors duration-300`}
                 >
                   {current.category === 'student' ? 'Job Seeker' : 'Recruiter'}
                 </Badge>
               </div>
 
-              <blockquote className="text-2xl md:text-3xl font-medium text-gray-900 mb-8 leading-relaxed">
+              <blockquote className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-8 leading-relaxed transition-colors duration-300">
                 "{current.quote}"
               </blockquote>
 
               <div className="space-y-2">
-                <div className="text-xl font-bold text-gray-900">{current.author}</div>
-                <div className="text-brand-600 font-medium">{current.role}</div>
-                <div className="text-gray-500">{current.company}</div>
+                <div className="text-xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{current.author}</div>
+                <div className="text-brand-600 dark:text-brand-400 font-medium transition-colors duration-300">{current.role}</div>
+                <div className="text-gray-500 dark:text-gray-400 transition-colors duration-300">{current.company}</div>
               </div>
             </CardContent>
           </Card>
@@ -103,10 +103,10 @@ const TestimonialsSection = () => {
           <div className="flex items-center justify-center mt-8 space-x-4">
             <button
               onClick={prevTestimonial}
-              className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow border border-gray-200"
+              className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
               aria-label="Previous testimonial"
             >
-              <ArrowUp className="h-5 w-5 text-gray-600" />
+              <ArrowUp className="h-5 w-5 text-gray-600 dark:text-gray-300" />
             </button>
 
             <div className="flex space-x-2">
@@ -115,7 +115,7 @@ const TestimonialsSection = () => {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentTestimonial ? 'bg-brand-600 scale-125' : 'bg-gray-300'
+                    index === currentTestimonial ? 'bg-brand-600 dark:bg-brand-400 scale-125' : 'bg-gray-300 dark:bg-gray-600'
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -124,10 +124,10 @@ const TestimonialsSection = () => {
 
             <button
               onClick={nextTestimonial}
-              className="p-2 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow border border-gray-200"
+              className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700"
               aria-label="Next testimonial"
             >
-              <ArrowDown className="h-5 w-5 text-gray-600" />
+              <ArrowDown className="h-5 w-5 text-gray-600 dark:text-gray-300" />
             </button>
           </div>
         </div>

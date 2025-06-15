@@ -46,13 +46,13 @@ const PortfolioExamples = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white transition-colors duration-300">
             Real Portfolios, <span className="gradient-text">Real Results</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
             See how professionals across different fields showcase their work and achievements.
           </p>
         </div>
@@ -61,7 +61,7 @@ const PortfolioExamples = () => {
           {portfolios.map((portfolio) => (
             <Card
               key={portfolio.id}
-              className="group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-none overflow-hidden"
+              className="group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-none overflow-hidden bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
               onMouseEnter={() => setHoveredPortfolio(portfolio.id)}
               onMouseLeave={() => setHoveredPortfolio(null)}
             >
@@ -76,13 +76,13 @@ const PortfolioExamples = () => {
               
               <CardContent className="p-6">
                 <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{portfolio.name}</h3>
-                  <p className="text-brand-600 font-medium">{portfolio.role}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 transition-colors duration-300">{portfolio.name}</h3>
+                  <p className="text-brand-600 dark:text-brand-400 font-medium transition-colors duration-300">{portfolio.role}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {portfolio.tags.map((tag, index) => (
-                    <Badge key={index} variant="secondary" className="text-xs">
+                    <Badge key={index} variant="secondary" className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">
                       {tag}
                     </Badge>
                   ))}
@@ -91,16 +91,16 @@ const PortfolioExamples = () => {
                 <div className={`space-y-3 transition-all duration-300 ${
                   hoveredPortfolio === portfolio.id ? 'opacity-100' : 'opacity-0'
                 }`}>
-                  <p className="text-sm text-gray-600">{portfolio.preview}</p>
-                  <div className="p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
-                    <p className="text-sm font-medium text-green-800">{portfolio.metrics}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">{portfolio.preview}</p>
+                  <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-lg border-l-4 border-green-400 dark:border-green-500 transition-colors duration-300">
+                    <p className="text-sm font-medium text-green-800 dark:text-green-200 transition-colors duration-300">{portfolio.metrics}</p>
                   </div>
                 </div>
 
                 <div className={`mt-4 transition-all duration-300 ${
                   hoveredPortfolio === portfolio.id ? 'opacity-0' : 'opacity-100'
                 }`}>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                     Hover to see portfolio highlights
                   </p>
                 </div>
@@ -110,7 +110,7 @@ const PortfolioExamples = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">Ready to create your own standout portfolio?</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-4 transition-colors duration-300">Ready to create your own standout portfolio?</p>
           <button className="bg-gradient-primary text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
             Get Started Free
           </button>
