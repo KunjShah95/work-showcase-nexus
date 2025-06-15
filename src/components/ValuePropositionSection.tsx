@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Wand2, Code, Search } from 'lucide-react';
@@ -22,13 +23,13 @@ const ValuePropositionSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section id="professionals" className="py-20 px-4 bg-white dark:bg-gray-900">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">
             Why Choose <span className="gradient-text">Portfolios.tech</span>?
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Traditional resumes only tell part of your story. Show employers what you can actually do.
           </p>
         </div>
@@ -37,7 +38,7 @@ const ValuePropositionSection = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="hover-lift border-none shadow-lg bg-gradient-to-br from-white to-gray-50 relative overflow-hidden"
+              className="hover-lift border-none shadow-lg bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 relative overflow-hidden"
             >
               <CardContent className="p-8 text-center">
                 <div className="mb-6 relative">
@@ -46,11 +47,11 @@ const ValuePropositionSection = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
                   {feature.title}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
               </CardContent>
