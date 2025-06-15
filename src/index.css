@@ -88,7 +88,7 @@
 
 @layer base {
   * {
-    @apply border-border transition-colors duration-200;
+    @apply border-border transition-colors duration-300;
   }
 
   body {
@@ -106,10 +106,23 @@
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl dark:hover:shadow-2xl;
   }
   
   .glass {
     @apply backdrop-blur-sm bg-white/10 dark:bg-gray-900/10 border border-white/20 dark:border-gray-700/20;
+  }
+
+  /* Enhanced dark mode support */
+  .dark .shadow-lg {
+    @apply shadow-gray-900/25;
+  }
+  
+  .dark .shadow-xl {
+    @apply shadow-gray-900/40;
+  }
+  
+  .dark .shadow-2xl {
+    @apply shadow-gray-900/50;
   }
 }
