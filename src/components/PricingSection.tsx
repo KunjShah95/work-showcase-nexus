@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, X } from 'lucide-react';
 
 const PricingSection = () => {
   const plans = [
@@ -12,12 +12,16 @@ const PricingSection = () => {
       period: "forever",
       description: "Perfect for getting started",
       features: [
-        "1 Portfolio",
-        "Basic Templates",
-        "Limited Customization",
-        "Community Support"
+        { name: "1 Portfolio", included: true },
+        { name: "Basic Templates", included: true },
+        { name: "Limited Customization", included: true },
+        { name: "Community Support", included: true },
+        { name: "Custom Domain", included: false },
+        { name: "Advanced Analytics", included: false },
+        { name: "Priority Support", included: false }
       ],
-      popular: false
+      popular: false,
+      buttonText: "Get Started"
     },
     {
       name: "Pro",
@@ -25,29 +29,33 @@ const PricingSection = () => {
       period: "per month",
       description: "Best for professionals",
       features: [
-        "Unlimited Portfolios",
-        "Premium Templates",
-        "Advanced Customization",
-        "AI Optimization",
-        "Priority Support",
-        "Custom Domain"
+        { name: "Unlimited Portfolios", included: true },
+        { name: "Premium Templates", included: true },
+        { name: "Advanced Customization", included: true },
+        { name: "AI Optimization", included: true },
+        { name: "Priority Support", included: true },
+        { name: "Custom Domain", included: true },
+        { name: "Advanced Analytics", included: true }
       ],
-      popular: true
+      popular: true,
+      buttonText: "Choose Plan"
     },
     {
       name: "Enterprise",
-      price: "₹999",
-      period: "per month",
+      price: null,
+      period: "",
       description: "For teams and organizations",
       features: [
-        "Everything in Pro",
-        "Team Collaboration",
-        "Advanced Analytics",
-        "White Label Solution",
-        "Dedicated Support",
-        "API Access"
+        { name: "Everything in Pro", included: true },
+        { name: "Team Collaboration", included: true },
+        { name: "Advanced Analytics", included: true },
+        { name: "White Label Solution", included: true },
+        { name: "Dedicated Support", included: true },
+        { name: "API Access", included: true },
+        { name: "Custom Integrations", included: true }
       ],
-      popular: false
+      popular: false,
+      buttonText: "Contact Us"
     }
   ];
 
@@ -59,7 +67,7 @@ const PricingSection = () => {
             Simple, Transparent <span className="gradient-text">Pricing</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
-            Choose the plan that's right for you. All plans include our core features.
+            Choose the plan that's right for you. Upgrade or downgrade at any time.
           </p>
         </div>
         
@@ -87,12 +95,20 @@ const PricingSection = () => {
                   {plan.name}
                 </CardTitle>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
-                    {plan.price}
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-400 ml-2 transition-colors duration-300">
-                    {plan.period}
-                  </span>
+                  {plan.price ? (
+                    <>
+                      <span className="text-4xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                        {plan.price}
+                      </span>
+                      <span className="text-gray-600 dark:text-gray-400 ml-2 transition-colors duration-300">
+                        {plan.period}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                      Custom Pricing
+                    </span>
+                  )}
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 mt-2 transition-colors duration-300">
                   {plan.description}
@@ -103,9 +119,17 @@ const PricingSection = () => {
                 <ul className="space-y-3">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">
-                        {feature}
+                      {feature.included ? (
+                        <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                      ) : (
+                        <X className="h-5 w-5 text-gray-400 mr-3 flex-shrink-0" />
+                      )}
+                      <span className={`transition-colors duration-300 ${
+                        feature.included 
+                          ? 'text-gray-700 dark:text-gray-300' 
+                          : 'text-gray-400 dark:text-gray-500 line-through'
+                      }`}>
+                        {feature.name}
                       </span>
                     </li>
                   ))}
@@ -115,15 +139,26 @@ const PricingSection = () => {
                   className={`w-full mt-6 transition-all duration-300 ${
                     plan.popular
                       ? 'bg-gradient-primary text-white hover:opacity-90'
+                      : plan.name === 'Enterprise'
+                      ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100'
                       : 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100'
                   }`}
                   size="lg"
                 >
-                  {plan.name === 'Free' ? 'Get Started' : 'Choose Plan'}
+                  {plan.buttonText}
                 </Button>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            All plans include SSL certificate, 99.9% uptime guarantee, and 24/7 support
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-500">
+            No setup fees • Cancel anytime • 30-day money-back guarantee
+          </p>
         </div>
       </div>
     </section>
